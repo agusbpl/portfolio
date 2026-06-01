@@ -1,0 +1,181 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const Github = "div";
+const Linkedin = "div";
+const Mail = "div";
+const ExternalLink = "div";
+const Terminal = "div";
+const Briefcase = "div";
+const GraduationCap = "div";
+const Award = "div";
+const FileText = "div";
+
+const projects = [
+  {
+    title: "MarginAnalyzer",
+    description: "Professional Break-even Analysis & Profit Simulator. Translates complex accounting concepts into interactive data visualizations.",
+    tech: ["Python", "Streamlit", "Plotly", "Pandas"],
+    github: "https://github.com/agusbpl/margin-analyzer",
+    live: "https://margin-analyzer.streamlit.app/",
+    impact: "Helps business owners identify shutdown points and simulated profit targets with real-time feedback."
+  }
+];
+
+const experience = [
+  {
+    role: "Seasonal Operations & Customer Service",
+    company: "Parador Atalaya",
+    period: "2022 – 2026",
+    details: "High-speed production line operations and customer service during peak seasonal demand for 4 consecutive years."
+  }
+];
+
+const leadership = [
+  {
+    role: "Patrol Leader / Team Sub-leader",
+    org: "Scout Movement",
+    period: "2011 – 2023",
+    details: "12 years of active participation, leading teams of 11-17 year olds in community projects and organizational tasks."
+  }
+];
+---
+
+<Layout title="Agustín Barthe | Data Science & Business Logic">
+	<main class="max-w-4xl mx-auto px-6 py-20 space-y-32">
+		
+		<!-- Hero Section -->
+		<section class="space-y-6">
+			<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-mono">
+				<Terminal size={14} />
+				<span>arch_linux_user</span>
+			</div>
+			<h1 class="text-5xl md:text-7xl font-bold tracking-tight">
+				Agustín <span class="text-zinc-500">Barthe</span>
+			</h1>
+			<p class="text-xl text-zinc-400 max-w-2xl leading-relaxed">
+				3rd Year <span class="text-zinc-100 font-medium">Data Science Student</span> at UNLP. 
+				Bridging the gap between technical data analysis and strategic business decision-making.
+			</p>
+			<div class="flex gap-4 pt-4">
+				<a href="https://github.com/agusbpl" class="p-2 rounded-lg bg-zinc-900 border border-zinc-800 hover:border-zinc-700 transition-colors">
+					<Github size={20} />
+				</a>
+				<a href="https://linkedin.com/in/agustin-barthe-placenave" class="p-2 rounded-lg bg-zinc-900 border border-zinc-800 hover:border-zinc-700 transition-colors">
+					<Linkedin size={20} />
+				</a>
+				<a href="mailto:agusplacenave@gmail.com" class="p-2 rounded-lg bg-zinc-900 border border-zinc-800 hover:border-zinc-700 transition-colors">
+					<Mail size={20} />
+				</a>
+        <a href="#" class="flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-medium transition-colors">
+          <FileText size={18} />
+          Resume
+        </a>
+			</div>
+		</section>
+
+		<!-- Projects -->
+		<section id="projects" class="space-y-10">
+			<div class="flex items-center gap-3">
+				<Briefcase class="text-emerald-500" />
+				<h2 class="text-2xl font-bold italic tracking-tighter">SELECTED_PROJECTS</h2>
+			</div>
+			
+			<div class="grid gap-8">
+				{projects.map(p => (
+					<div class="group relative p-8 rounded-2xl bg-zinc-900/50 border border-zinc-800 hover:border-emerald-500/50 transition-all">
+						<div class="space-y-4">
+							<div class="flex justify-between items-start">
+								<h3 class="text-2xl font-bold">{p.title}</h3>
+								<div class="flex gap-3">
+									<a href={p.github} class="text-zinc-500 hover:text-white transition-colors" title="View Source">
+										<Github size={20} />
+									</a>
+									{p.live && (
+										<a href={p.live} class="text-zinc-500 hover:text-emerald-400 transition-colors" title="Live Demo">
+											<ExternalLink size={20} />
+										</a>
+									)}
+								</div>
+							</div>
+							<p class="text-zinc-400 leading-relaxed">{p.description}</p>
+							<div class="flex flex-wrap gap-2">
+								{p.tech.map(t => (
+									<span class="px-2 py-1 rounded bg-zinc-800 text-xs font-mono text-zinc-300">{t}</span>
+								))}
+							</div>
+							<div class="pt-4 border-t border-zinc-800/50">
+								<p class="text-sm text-zinc-500"><span class="text-emerald-500 font-mono text-xs uppercase tracking-wider mr-2">Impact:</span>{p.impact}</p>
+							</div>
+						</div>
+					</div>
+				))}
+			</div>
+		</section>
+
+		<!-- Education & Experience -->
+		<div class="grid md:grid-cols-2 gap-20">
+			<!-- Experience -->
+			<section class="space-y-8">
+				<div class="flex items-center gap-3">
+					<Award class="text-emerald-500" />
+					<h2 class="text-2xl font-bold italic tracking-tighter">EXPERIENCE</h2>
+				</div>
+				<div class="space-y-8">
+					{experience.map(e => (
+						<div class="relative pl-6 border-l border-zinc-800">
+							<div class="absolute -left-[5px] top-1.5 w-2 h-2 rounded-full bg-emerald-500"></div>
+							<h4 class="font-bold">{e.role}</h4>
+							<p class="text-sm text-zinc-500 mb-2">{e.company} • {e.period}</p>
+							<p class="text-sm text-zinc-400">{e.details}</p>
+						</div>
+					))}
+				</div>
+			</section>
+
+			<!-- Education -->
+			<section class="space-y-8">
+				<div class="flex items-center gap-3">
+					<GraduationCap class="text-emerald-500" />
+					<h2 class="text-2xl font-bold italic tracking-tighter">EDUCATION</h2>
+				</div>
+				<div class="space-y-8">
+					<div class="relative pl-6 border-l border-zinc-800">
+						<div class="absolute -left-[5px] top-1.5 w-2 h-2 rounded-full bg-emerald-500"></div>
+						<h4 class="font-bold">B.S. in Data Science</h4>
+						<p class="text-sm text-zinc-500 mb-2">UNLP • 2024 – Present</p>
+						<p class="text-sm text-zinc-400">Focus on interpretation of data for strategic decision making and business process management.</p>
+					</div>
+				</div>
+			</section>
+		</div>
+
+    <!-- Leadership (Scouts) -->
+    <section class="p-8 rounded-2xl bg-emerald-500/5 border border-emerald-500/10 space-y-6">
+      <div class="flex items-center gap-3">
+        <h2 class="text-2xl font-bold italic tracking-tighter text-emerald-400">LEADERSHIP_VALUES</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-8">
+        {leadership.map(l => (
+          <div class="space-y-2">
+            <h4 class="font-bold text-zinc-100">{l.role}</h4>
+            <p class="text-xs text-emerald-500/70 font-mono uppercase tracking-widest">{l.org} | {l.period}</p>
+            <p class="text-sm text-zinc-400 leading-relaxed">{l.details}</p>
+          </div>
+        ))}
+        <div class="space-y-2">
+          <h4 class="font-bold text-zinc-100">Discipline & Constancy</h4>
+          <p class="text-xs text-emerald-500/70 font-mono uppercase tracking-widest">Taekwondo | 2012 – 2023</p>
+          <p class="text-sm text-zinc-400 leading-relaxed">Achieved Red Belt Black Point (Cinturón rojo punta negra) after a decade of continuous practice.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="pt-20 pb-10 border-t border-zinc-900 text-center text-zinc-600 text-sm font-mono">
+      <p>Built with Astro + Tailwind by agusbpl</p>
+      <p class="mt-2 text-zinc-800 tracking-tighter">arch_linux // neovim // data_science</p>
+    </footer>
+
+	</main>
+</Layout>
